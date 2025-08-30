@@ -1,263 +1,169 @@
+
+***
+
 # 🤖 Conversational RAG Q&A System
 
-A sophisticated Retrieval-Augmented Generation (RAG) system that allows users to upload documents and ask intelligent questions with AI-powered answers, complete with source citations and reasoning. Built with FastAPI, MongoDB Atlas, Qdrant Cloud, and Ollama LLM.
+A cutting-edge Retrieval-Augmented Generation (RAG) system for document Q&A with **live demo video**, AI-powered answers, source citations, and transparency – powered by FastAPI, MongoDB Atlas, Qdrant Cloud, and Ollama LLM for optimal performance.
+
+***
+
+## 🚀 Live Demo & Visual Guide
+
+### 🌐 [Live Demo Video](https://drive.google.com/file/d/1AmKZeT00FpON--W6ndOoyf9-xS8-pkL-/view?usp=sharing)
+
+- See the system in action (full workflow, real context)  
+- Hosted on RTX 5090 GPU for rapid AI inference
+
+### 📸 [Screenshot 1](https://drive.google.com/file/d/6ndOoyf9-xS8-pkL-/view?usp=sharing)  
+### 📸 [Screenshot 2](https://drive.google.com/file/d/6ndOoyf9-xS8)
+
+- Main dashboard with document drag-and-drop and chatbot UI
+- Real-time upload confirmation and chat response example
+
+### 🔗 [GitHub Repository](https://github.com/LearnCodeWithRam/conversational_RAG_system.git)
+
+***
 
 ## ✨ Features
 
-- **Document Upload**: Support for PDF and TXT files with automatic text extraction and chunking
-- **Intelligent Q&A**: Multi-turn conversations with context awareness using Ollama LLM
-- **Source Citations**: Every answer includes references to specific document sections
-- **Reasoning Transparency**: Explains how answers were derived from the source material
-- **Follow-up Suggestions**: AI-generated related questions to continue the conversation
-- **Modern UI**: Clean, responsive web interface with drag-and-drop upload
-- **Cloud-Ready**: Uses MongoDB Atlas and Qdrant Cloud for scalability
-- **GPU Acceleration**: Deployed on RTX 5090 GPU for optimal performance
+- **Document Upload**: Seamlessly handle PDF & TXT files with automatic text extraction
+- **Conversational Q&A**: Multi-turn intelligent chat powered by Ollama LLM
+- **Source Citations**: Every answer is reference-backed for trust and transparency
+- **Reasoning Traceability**: See precisely how responses are constructed from sources
+- **Smart Suggestions**: Follow-up question prompts to deepen dialogue
+- **Modern UI**: Drag-and-drop uploads, instant feedback, and live chat
+- **Cloud Ready**: Built for MongoDB Atlas & Qdrant; scalable and robust
+- **GPU Acceleration**: Harnesses RTX 5090 for fast inference
+
+***
 
 ## 🏗️ Architecture
 
 ```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Frontend UI   │    │   FastAPI API   │    │   Ollama LLM    │
-│   (HTML/CSS/JS) │◄──►│                 │◄──►│   (llama3.1:8b) │
-└─────────────────┘    │                 │    └─────────────────┘
-                       │                 │    
-                       │                 │    ┌─────────────────┐
-                       │                 │◄──►│ Sentence Trans. │
-                       │                 │    │   (Embeddings)  │
-                       └─────────────────┘    └─────────────────┘
-                               │
-                ┌──────────────┼──────────────┐
-                │              │              │
-        ┌───────▼──────┐ ┌─────▼──────┐ ┌────▼──────┐
-        │   MongoDB    │ │   Qdrant   │ │  Static   │
-        │   (Cloud)    │ │  (Cloud)   │ │  Files    │
-        │              │ │            │ │           │
-        │ • Documents  │ │ • Vector   │ │ • UI      │
-        │ • Metadata   │ │   Store    │ │ • Assets  │
-        │ • Chat Hist  │ │ • Semantic │ │           │
-        └──────────────┘ │   Search   │ └───────────┘
-                         └────────────┘
+┌─────────────┐     ┌──────────────┐     ┌───────────────┐
+│  Frontend   │<───►│   FastAPI    │<───►│  Ollama LLM   │
+│   (Web UI)  │     │    Server    │     │(llama3.1:8b)  │
+└─────────────┘     └────┬─────────┘     └───────────────┘
+                         │
+                ┌────────▼────────┐
+                │ Embeddings      │
+                │ (MiniLM, VLM)   │
+                └────────┬────────┘
+                         │
+   ┌────────────┐  ┌─────▼────┐  ┌─────────┐
+   │  MongoDB   │  │ Qdrant  │  │  Static │
+   │   Atlas    │  │ Vector  │  │   UI    │
+   └────────────┘  └─────────┘  └─────────┘
 ```
 
-## 📸 User Interface Screenshots
+***
 
-### Main Dashboard
-The clean, modern interface provides an intuitive user experience with drag-and-drop document upload and real-time chat interface.
+## 📸 User Interface Gallery
 
-### Document Upload Process
-1. **Drag & Drop Area**: Simply drag PDF or TXT files onto the upload area
-2. **Processing**: Automatic text extraction and chunking with progress indicators
-3. **Confirmation**: Visual feedback showing successful upload and chunk count
+- Main dashboard: drag-and-drop upload area and chat interface
+- Upload confirmation and chunking status
+- Real-time Q&A with clickable source citations and follow-up prompts
 
-### Conversational Q&A
-1. **Question Input**: Natural language question input with enter-key support
-2. **AI Response**: Detailed answers with reasoning and source citations
-3. **Follow-up Suggestions**: Smart question suggestions to continue the conversation
-4. **Reference Links**: Click-able references showing document sources and page numbers
+***
 
-## 🚀 Quick Start
+## ⚡️ Getting Started
 
 ### Prerequisites
 
 - Python 3.11+
 - MongoDB Atlas account
 - Qdrant Cloud account
-- RTX 5090 GPU (for optimal performance)
+- RTX 5090 GPU (for full speed)
 - Ollama server with llama3.1:8b model
+- Docker (for container deployment)
 
-### 1. Clone and Setup
+### 1. Clone & Setup
 
 ```bash
-git clone <repository-url>
-cd rag-qa-system
+git clone https://github.com/LearnCodeWithRam/conversational_RAG_system.git
+cd conversational_RAG_system
 pip install -r requirements.txt
 ```
 
 ### 2. Environment Configuration
 
-The system uses hardcoded credentials for simplicity, but you can create a `.env` file for additional customization:
+Create a `.env` file (see sample below):
 
 ```env
-# Optional: Override default settings
+DB_PASSWORD=
+QDRANT_URL=
+QDRANT_API_KEY=
+MONGODB_URL=
 CHUNK_SIZE=500
 CHUNK_OVERLAP=80
 MAX_CONTEXT_LENGTH=2000
 ```
 
-**Note**: The system is pre-configured with:
-- MongoDB Atlas: `mongodb+srv://ihub_incubation:SfDMYHQZGzOhFW9E@cluster0.gz3io9i.mongodb.net/`
-- Qdrant Cloud: URL and API key included in code
-- Ollama Server: `http://115.241.186.203` with llama3.1:8b model
-
-### 3. Initialize Database
+### 3. Database Initialization
 
 ```bash
-# Run database setup script
 python setup_database.py
 ```
 
-This script will:
-- Test MongoDB Atlas connection
-- Create Qdrant collection if not exists
-- Test Ollama LLM connection
-- Verify all services are operational
+Tests all connections and sets up collections.
 
 ### 4. Download Embedding Model
 
-The system automatically downloads the `all-MiniLM-L6-v2` model on first run, but you can pre-download:
-
 ```bash
-# The model will be saved to ./all-MiniLM-L6-v2/
 python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('all-MiniLM-L6-v2').save('./all-MiniLM-L6-v2')"
 ```
 
-### 5. Run the Application
+### 5. Run Application
 
 ```bash
-# Development mode
-uvicorn main:app --host 0.0.0.0 --port 8000 --reload
-
-# Production mode
-uvicorn main:app --host 0.0.0.0 --port 8000
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload  # Dev
+# OR
+uvicorn main:app --host 0.0.0.0 --port 8000           # Production
 ```
 
-### 6. Access the UI
+Open `http://localhost:8000` for the UI.
 
-Open your browser and navigate to: `http://localhost:8000`
+***
 
-## 🌐 Docker Deployment on RTX 5090 GPU Server
+## 🐳 Docker Deployment
 
-### Actual Deployment Setup
+### Dockerfile
 
-The application is deployed using Docker containers with Nginx reverse proxy on an RTX 5090 GPU server.
-
-### 1. Docker Deployment
-
-Create `Dockerfile`:
 ```dockerfile
-FROM python:3.11-slim
-
+FROM python:3.10-slim
 WORKDIR /app
-
-# Copy requirements and install dependencies
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-
-# Copy application code
-COPY . .
-
-# Create directory for model storage
-RUN mkdir -p ./all-MiniLM-L6-v2
-
-# Expose port
-EXPOSE 8000
-
-# Start command
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-```
-
-Create `docker-compose.yml`:
-```yaml
-version: '3.8'
-services:
-  rag-app:
-    build: .
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./all-MiniLM-L6-v2:/app/all-MiniLM-L6-v2
-    environment:
-      - CUDA_VISIBLE_DEVICES=0
-    restart: unless-stopped
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
-```
-
-### 2. Deploy with Docker
-
-```bash
-# Clone repository
-git clone <your-repo-url>
-cd rag-qa-system
-
-# Build and run with Docker Compose
-docker-compose up -d
-
-# Check container status
-docker-compose ps
-
-# View logs
-docker-compose logs -f rag-app
-```
-
-## 📦 Required Files
-
-### Create `Dockerfile`
-```dockerfile
-FROM python:3.11-slim
-
-WORKDIR /app
-
-# Install system dependencies
 RUN apt-get update && apt-get install -y \
     gcc \
+    poppler-utils \
     && rm -rf /var/lib/apt/lists/*
-
-# Copy requirements and install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy application code
 COPY . .
-
-# Create directory for model storage
-RUN mkdir -p ./all-MiniLM-L6-v2
-
-# Expose port
 EXPOSE 8000
-
-# Start command
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
 ```
 
-### Create `docker-compose.yml`
-```yaml
-version: '3.8'
-services:
-  rag-app:
-    build: .
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./all-MiniLM-L6-v2:/app/all-MiniLM-L6-v2
-      - ./static:/app/static
-    environment:
-      - PYTHONPATH=/app
-    restart: unless-stopped
-    networks:
-      - rag-network
-
-### 3. Configure Nginx Reverse Proxy
-
-Create Nginx configuration for global access:
+### Build & Run
 
 ```bash
-# Create Nginx configuration
-sudo nano /etc/nginx/sites-available/rag-qa
+docker build -t rag-system .
+docker run -d --env-file .env -p 8000:8000 rag-system
 ```
 
-**Nginx configuration** (`/etc/nginx/sites-available/rag-qa`):
+#### For GPU:
+
+```bash
+docker run --gpus all --env-file .env -p 8000:8000 rag-system
+```
+
+***
+
+## 🌍 Nginx Reverse Proxy (Production)
+
 ```nginx
 server {
     listen 80;
-    server_name your-domain.com;  # Replace with your domain/IP
-
-    client_max_body_size 100M;  # Allow large file uploads
+    server_name your-domain.com;
 
     location / {
         proxy_pass http://127.0.0.1:8000;
@@ -265,188 +171,103 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-        
-        # WebSocket support
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        
-        # Timeouts for large file processing
-        proxy_connect_timeout 300s;
-        proxy_send_timeout 300s;
-        proxy_read_timeout 300s;
-    }
-
-    # Optional: Serve static files directly
-    location /static/ {
-        alias /path/to/your/app/static/;
-        expires 1d;
-        add_header Cache-Control "public, immutable";
+        proxy_read_timeout 300;
+        proxy_connect_timeout 300;
+        proxy_send_timeout 300;
     }
 }
 ```
 
-```bash
-# Enable site and restart Nginx
-sudo ln -s /etc/nginx/sites-available/rag-qa /etc/nginx/sites-enabled/
-sudo nginx -t  # Test configuration
-sudo systemctl reload nginx
+Restart nginx after configuration change.
+
+***
+
+## 🗂️ Project Structure
+
+```
+RAG_SYSTEM/
+├── all-MiniLM-L6-v2/
+│
+├── models/
+│   ├── __pycache__/
+│   └── pydantic_models.py
+│
+├── sampl_data/
+│   ├── colpali.pdf
+│   └── inflation and economics trends.pdf
+│
+├── services/
+│   ├── __pycache__/
+│   ├── embeddings.py
+│   └── ollama_service.py
+│
+├── static/
+│   └── index.html
+│
+├── utils/
+│   ├── __pycache__/
+│   └── util_module.py
+│
+├── .dockerignore
+├── .env
+├── .gitignore
+├── config.py
+├── Dockerfile
+├── main.py
+├── quick_start.md
+├── README.md
+├── requirements.txt
+└── setup_database.py
 ```
 
-### 4. Complete Deployment Commands
+***
 
-```bash
-# 1. Build and start containers
-docker-compose up -d --build
+## 📚 API Reference
 
-# 2. Verify deployment
-docker-compose ps
-docker-compose logs -f rag-app
-
-# 3. Test application
-curl http://localhost:8000
-
-# 4. Access via domain/IP (after Nginx setup)
-# Navigate to: http://your-domain.com
-```
-
-### 5. Container Management
-
-```bash
-# View running containers
-docker-compose ps
-
-# Stop application
-docker-compose down
-
-# Update and restart
-git pull
-docker-compose up -d --build
-
-# View logs
-docker-compose logs -f rag-app
-
-# Execute commands inside container
-docker-compose exec rag-app python setup_database.py
-```
-
-### Create `requirements.txt`
-```txt
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
-python-multipart==0.0.6
-pymongo==4.6.0
-qdrant-client==1.7.0
-sentence-transformers==2.2.2
-PyPDF2==3.0.1
-python-dotenv==1.0.0
-pydantic==2.5.0
-langchain-ollama==0.0.1
-```
+Sample endpoints:
 
 ```bash
-# Install Nginx
-sudo apt install nginx
+# Upload document
+curl -X POST "http://your-domain.com/upload" -F "file=@document.pdf"
 
-# Create configuration
-sudo nano /etc/nginx/sites-available/rag-qa
+# Ask a question
+curl -X POST "http://your-domain.com/ask" \
+  -H "Content-Type: application/json" \
+  -d '{ "user_id": "user123", "question": "What is AI?", "top_k": 4 }'
+
+# Get history
+curl -X GET "http://your-domain.com/history?user_id=user123"
 ```
 
-**Nginx configuration** (`/etc/nginx/sites-available/rag-qa`):
-```nginx
-server {
-    listen 80;
-    server_name your-domain.com;  # Replace with your domain
+***
 
-    client_max_body_size 100M;  # Allow large file uploads
+## 🛠️ Advanced (ColPali Integration Coming Soon)
 
-    location / {
-        proxy_pass http://127.0.0.1:8000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        
-        # WebSocket support (if needed)
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        
-        # Timeouts
-        proxy_connect_timeout 60s;
-        proxy_send_timeout 60s;
-        proxy_read_timeout 60s;
-    }
-}
-```
+A powerful update is in development to support **multimodal RAG**:  
+- Incorporates document structure, tables, figures, and images
+- Uses ColPali and ColQwen 2.5 for better layout and visual data understanding  
+- Timeline: Rolling out in the next few days
 
-```bash
-# Enable site
-sudo ln -s /etc/nginx/sites-available/rag-qa /etc/nginx/sites-enabled/
-sudo nginx -t  # Test configuration
-sudo systemctl restart nginx
-```
+References:  
+- [ColPali Paper](https://arxiv.org/abs/2407.01449)  
+- [ColPali GitHub](https://github.com/illuin-tech/colpali)  
+- [ColQwen 2.5 Model](https://huggingface.co/vidore/colqwen2.5-v0.2)
 
-### 5. SSL Certificate (Optional but Recommended)
+***
 
-```bash
-# Install Certbot
-sudo apt install certbot python3-certbot-nginx
+## 🏁 Usage Tips
 
-# Get SSL certificate
-sudo certbot --nginx -d your-domain.com
+- Upload relevant PDFs or TXTs before asking
+- Use specific questions for higher-accuracy results
+- Verify info via clickable citations
+- Clear system state before switching document sets
 
-# Auto-renewal
-sudo crontab -e
-# Add: 0 12 * * * /usr/bin/certbot renew --quiet
-```
+***
 
-### 6. Firewall Configuration
 
-```bash
-# Configure UFW
-sudo ufw allow ssh
-sudo ufw allow 'Nginx Full'
-sudo ufw enable
 
-# Check status
-sudo ufw status
-```
 
-## 🔧 Production Configuration
 
-### Environment Variables for Production
-
-Create `/etc/environment` or use systemd environment files:
-
-```bash
-# Performance tuning
-CUDA_VISIBLE_DEVICES=0
-OMP_NUM_THREADS=8
-PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:128
-
-# Application settings
-WORKERS=4
-MAX_REQUESTS=1000
-KEEP_ALIVE=2
-```
-
-### Monitoring and Logging
-
-```bash
-# Install monitoring tools
-sudo apt install htop nvtop
-
-# Check GPU usage
-watch -n 1 nvidia-smi
-
-# Monitor application logs
-sudo journalctl -u rag-qa.service -f
-
-# Monitor Nginx logs
-sudo tail -f /var/log/nginx/access.log
-sudo tail -f /var/log/nginx/error.log
-```
 
 ## 📚 API Documentation
 
