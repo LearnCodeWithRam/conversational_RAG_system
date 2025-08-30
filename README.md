@@ -377,29 +377,6 @@ curl -X DELETE "http://your-domain.com/clear"
 }
 ```
 
-## 🎯 Usage Process
-
-### Step-by-Step Process
-
-1. **Document Upload**
-   - Navigate to the web interface
-   - Drag and drop PDF/TXT files or click to browse
-   - Wait for processing confirmation with chunk count
-
-2. **Ask Questions**
-   - Type your question in natural language
-   - Press Enter or click "Ask" button
-   - Receive detailed answer with reasoning
-
-3. **Review References**
-   - Check source citations for each answer
-   - Click on references to see document snippets
-   - Verify information accuracy
-
-4. **Continue Conversation**
-   - Use suggested follow-up questions
-   - Ask related questions for deeper understanding
-   - Build on previous context in multi-turn conversations
 
 ### Best Practices
 
