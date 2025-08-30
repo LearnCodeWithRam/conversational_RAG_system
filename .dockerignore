@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+.myenv/
+env/
+venv/
+
+# Cache & logs
+*.log
+*.db
+*.sqlite
+*.sqlite3
+.DS_Store
+Thumbs.db
+
+# Env file (mounted separately at runtime)
+.env
+
+# Docker build files
+Dockerfile
+.dockerignore
+
+# Git
+.git
+.gitignore

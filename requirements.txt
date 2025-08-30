@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+python-multipart
+pymongo
+qdrant-client
+
+sentence-transformers
+PyPDF2
+python-dotenv
+pydantic
+langchain_ollama

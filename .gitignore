@@ -1,0 +1,20 @@
+ 
+# Python
+__pycache__/
+
+
+# Virtual environments
+.myenv/
+
+# Environment variables
+.env
+*.env
+
+# Logs
+*.log
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Data / models
+all-MiniLM-L6-v2/
