@@ -90,13 +90,19 @@ pip install -r requirements.txt
 Create a `.env` file (see sample below):
 
 ```env
-DB_PASSWORD=
-QDRANT_URL=
-QDRANT_API_KEY=
-MONGODB_URL=
-CHUNK_SIZE=500
-CHUNK_OVERLAP=80
-MAX_CONTEXT_LENGTH=2000
+
+# Qdrant Cloud Configuration
+
+QDRANT_URL=""
+QDRANT_API_KEY=""
+
+
+# MongoDB Cloud Configuration(embeded the DB user id and pass)`
+MONGODB_URL= ""
+# ollama LLM Configuration
+OLLAMA_MODEL = "llama3.1:8b"
+OLLAMA_BASE_URL = " "
+
 ```
 
 ### 3. Database Initialization
