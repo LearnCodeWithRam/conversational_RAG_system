@@ -14,8 +14,8 @@ A cutting-edge Retrieval-Augmented Generation (RAG) system for document Q&A with
 - See the system in action (full workflow, real context)  
 - Hosted on RTX 5090 GPU for rapid AI inference
 
-### 📸 [Screenshot 1](assets/1.png)
-### 📸 [Screenshot 2](assets/2.png)
+![Screenshot 1](assets/1.png)
+![Screenshot 2](assets/2.png)
 
 - Main dashboard with document drag-and-drop and chatbot UI
 - Real-time upload confirmation and chat response example
