@@ -383,109 +383,20 @@ TOP_K = 4                 # Context chunks per query
 - **Vector Dimension**: 384 (matches embedding model)
 - **Distance Metric**: Cosine similarity
 
-## 🚨 Troubleshooting
-
-### Common Issues
-
-1. **GPU Out of Memory**
-   ```bash
-   # Check GPU usage
-   nvidia-smi
-   
-   # Restart Ollama service
-   sudo systemctl restart ollama
-   ```
-
-2. **Database Connection Issues**
-   ```bash
-   # Test MongoDB connection
-   python setup_database.py
-   
-   # Check network connectivity
-   ping cluster0.gz3io9i.mongodb.net
-   ```
-
-3. **Ollama Service Issues**
-   ```bash
-   # Check Ollama status
-   systemctl status ollama
-   
-   # View logs
-   journalctl -u ollama -f
-   
-   # Test model
-   ollama run llama3.1:8b "test"
-   ```
-
-4. **File Upload Issues**
-   - Check Nginx client_max_body_size setting
-   - Verify file permissions in upload directory
-   - Ensure sufficient disk space
-
-### Performance Optimization
-
-1. **GPU Memory Management**
-   - Monitor GPU usage with `nvidia-smi`
-   - Adjust batch sizes for large documents
-   - Use model quantization if needed
-
-2. **Application Performance**
-   - Increase number of workers for high traffic
-   - Implement caching for frequent queries
-   - Use connection pooling for databases
-
-3. **Network Optimization**
-   - Enable gzip compression in Nginx
-   - Use CDN for static assets
-   - Implement request rate limiting
-
-## 📊 Deployment Status
-
-### Live Demo
-- **Deployment Method**: Docker + Nginx
-- **GPU Server**: RTX 5090 powered
-- **Model**: llama3.1:8b via Ollama
-- **Status**: 🟢 Deployed and Running
-
-### Actual System Configuration
-```
-Deployment: Docker containerized application
-Reverse Proxy: Nginx for global access
-GPU: NVIDIA RTX 5090 (utilized via Docker GPU support)
-LLM Backend: Ollama server (llama3.1:8b)
-Databases: MongoDB Atlas + Qdrant Cloud
-Embedding Model: all-MiniLM-L6-v2 (local)
-```
+***
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Make your changes and test thoroughly
-4. Commit changes: `git commit -m 'Add amazing feature'`
-5. Push to branch: `git push origin feature/amazing-feature`
-6. Open a Pull Request
+- Fork the repo, create a feature branch, and submit a PR
+- Check README and code comments for guidance
+- Open issues for support
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License. See [LICENSE](LICENSE) for details.
 
-## 🙏 Acknowledgments
+***
 
-- **Ollama Team** for open-source LLM inference
-- **MongoDB Atlas** for cloud database services
-- **Qdrant** for vector database capabilities
-- **Sentence Transformers** for embedding models
-- **FastAPI** for the excellent web framework
-- **NVIDIA** for RTX 5090 GPU performance
+_Built with ❤️ for the AI community | Powered by RTX 5090 | Status: Basic version live, ColPali multimodal in-progress_
 
-## 📞 Support
-
-For support and questions:
-- **Issues**: Open a GitHub issue
-- **Documentation**: Check this README and code comments
-- **Community**: Join our Discord/Slack (if applicable)
-
----
-
-**Built with ❤️ for the AI community | Powered by RTX 5090 GPU**
+[1](https://drive.google.com/file/d/1AmKZeT00FpON--W6ndOoyf9-xS8-pkL-/view?usp=sharing)
