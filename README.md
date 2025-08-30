@@ -247,18 +247,67 @@ curl -X GET "http://your-domain.com/history?user_id=user123"
 
 ***
 
-## 🛠️ Advanced (ColPali Integration Coming Soon)
 
-A powerful update is in development to support **multimodal RAG**:  
-- Incorporates document structure, tables, figures, and images
-- Uses ColPali and ColQwen 2.5 for better layout and visual data understanding  
-- Timeline: Rolling out in the next few days
+## 📊 Current Limitations & Future Enhancements
 
-References:  
-- [ColPali Paper](https://arxiv.org/abs/2407.01449)  
-- [ColPali GitHub](https://github.com/illuin-tech/colpali)  
+### Current System Limitations
+
+The existing solution is a **basic text-based RAG system** with the following limitations:
+
+- **Text-Only Processing**: Can only extract and process plain text from PDFs
+- **Visual Content Loss**: Cannot understand or process:
+  - Tables and charts
+  - Graphs and diagrams
+  - Images and figures
+  - Complex layouts and formatting
+  - Visual relationships between elements
+
+### 🚀 Advanced ColPali Integration (In Development)
+
+To overcome these limitations, we are implementing an advanced solution based on **ColPali framework** that will provide:
+
+#### What is ColPali?
+
+**ColPali** is a revolutionary document retrieval method that leverages Vision Language Models (VLMs) to index and retrieve information directly from document images, bypassing traditional text extraction methods. By processing entire document pages as images, ColPali captures both textual content and visual elements—such as tables, figures, and layouts—thereby preserving the document's original structure and context.
+
+![ColPali Architecture](backend/assets/colpali.png)
+
+#### Enhanced Architecture (Coming Soon)
+
+The new system will implement:
+
+**Ingestion Process:**
+- Convert PDFs to high-quality JPEG images using `pdf2image`
+- Upload images to cloud storage (Supabase)
+- Generate embeddings using **ColQwen 2.5 (v0.2)** model
+- Index visual embeddings in Qdrant for semantic search
+
+![Ingestion Process](backend/assets/ingestion.png)
+
+**Inference Process:**
+- Query processing using ColQwen 2.5 embeddings
+- Retrieve top-k relevant document images
+- Use multimodal LLM (Claude Sonnet 3.7) for answer generation
+- Maintain visual context and understanding
+
+![Inference Process](backend/assets/inference.png)
+
+#### Key Advantages of ColPali Integration
+
+1. **Multi-Modal Understanding**: Process text, tables, charts, and images simultaneously
+2. **Layout Preservation**: Maintain document structure and visual relationships
+3. **Enhanced Accuracy**: Better understanding of complex documents with mixed content
+4. **Visual Question Answering**: Answer questions about charts, graphs, and figures
+5. **Table Processing**: Accurate extraction and understanding of tabular data
+
+#### Implementation Timeline
+
+🔧 **Status**: Currently in development  
+⏱️ **ETA**: Implementation expected in the next couple of days  
+📚 **References**: 
+- [ColPali Paper](https://arxiv.org/abs/2407.01449)
+- [ColPali Repository](https://github.com/illuin-tech/colpali)
 - [ColQwen 2.5 Model](https://huggingface.co/vidore/colqwen2.5-v0.2)
-
 ***
 
 ## 🏁 Usage Tips
@@ -269,12 +318,6 @@ References:
 - Clear system state before switching document sets
 
 ***
-
-
-
-
-
-
 ## 📚 API Documentation
 
 ### Upload Document
