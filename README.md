@@ -372,7 +372,7 @@ EMBEDDING_MODEL = "all-MiniLM-L6-v2"  # 384 dimensions
 ### LLM Settings
 ```python
 MODEL = "llama3.1:8b"     # Ollama model
-BASE_URL = "http://115.241.186.203"  # Ollama server
+BASE_URL = " "  # Ollama server
 TEMPERATURE = 0.7         # Response creativity
 TOP_K = 4                 # Context chunks per query
 ```
